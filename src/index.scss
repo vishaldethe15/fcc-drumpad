@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500;600&display=swap");
+
+$font: "Nunito", sans-serif;
+//colors
+$background: #f2cc8f;
+$drum-machine: #555b6e;
+$display: #e9ecef;
+$string: #000;
+$btns: #bee3db;
+$btn-hover: #89b0ae;
+$text: $string;
+
+@mixin layoutFlex($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-container {
+  width: 100%;
+  height: 100vh;
+  @include layoutFlex(column, center);
+  align-items: center;
+  background: $background;
+
+  #drum-machine {
+    @include layoutFlex(column, space-evenly);
+    align-items: center;
+    border-radius: 0.2rem;
+    padding: 1rem;
+    gap: 1rem;
+    background: $drum-machine;
+
+    #display {
+      height: 3rem;
+      width: 100%;
+      @include layoutFlex(column, center);
+      align-items: center;
+      background: $display;
+      border-radius: 0.2rem;
+      box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+
+      .string {
+        font-family: $font;
+        font-size: 1.5rem;
+        color: $string;
+      }
+    }
+    .buttons-container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      gap: 0.5rem;
+
+      .drum-pad {
+        border: none;
+        outline: none;
+        padding: 1rem;
+        background: $btns;
+        color: $text;
+        width: 5rem;
+        height: 5rem;
+        font-family: $font;
+        font-size: 1.3rem;
+        font-weight: 600;
+        border-radius: 0.2rem;
+        box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+
+        &:hover {
+          background: $btn-hover;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
